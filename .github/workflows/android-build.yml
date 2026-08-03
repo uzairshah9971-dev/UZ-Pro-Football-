@@ -28,6 +28,14 @@ jobs:
 
 
 
+      - name: Setup Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+
+
       - name: Install Capacitor
         run: |
           npm init -y
@@ -54,7 +62,7 @@ jobs:
 
 
 
-      - name: Sync Files
+      - name: Sync Capacitor
         run: |
           npx cap sync android
 
