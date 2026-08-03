@@ -28,37 +28,37 @@ function startTraining(){
 
     <div class="cards">
 
-        <div class="card">
+        <div class="card" onclick="openPage('shooting')">
         🎯
         <h3>Shooting</h3>
         </div>
 
 
-        <div class="card">
+        <div class="card" onclick="openPage('dribbling')">
         👟
         <h3>Dribbling</h3>
         </div>
 
 
-        <div class="card">
+        <div class="card" onclick="openPage('passing')">
         ⚽
         <h3>Passing</h3>
         </div>
 
 
-        <div class="card">
+        <div class="card" onclick="openPage('speed')">
         🏃
         <h3>Speed</h3>
         </div>
 
 
-        <div class="card">
+        <div class="card" onclick="openPage('fitness')">
         💪
         <h3>Fitness</h3>
         </div>
 
 
-        <div class="card">
+        <div class="card" onclick="openPage('nutrition')">
         🍎
         <h3>Nutrition</h3>
         </div>
@@ -67,4 +67,12 @@ function startTraining(){
     </div>
 
     `;
+}
+
+
+
+function openPage(page){
+
+    window.location.href = "pages/" + page + ".html";
+
 }
