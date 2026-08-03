@@ -6,13 +6,11 @@ on:
     branches:
       - main
 
-
 jobs:
 
   build:
 
     runs-on: ubuntu-latest
-
 
     steps:
 
@@ -30,7 +28,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '21'
-          distribution: 'temurin'
+          distribution: temurin
 
 
       - name: Install Capacitor
@@ -39,33 +37,29 @@ jobs:
           npm install @capacitor/core @capacitor/cli @capacitor/android
 
 
-      - name: Create Web Folder
+      - name: Prepare Web Files
         run: |
           mkdir www
           cp -r index.html style.css script.js assets pages www/
 
 
-      - name: Initialize Capacitor
+      - name: Create Capacitor Android Project
         run: |
           npx cap init "UZ Pro Football" "com.uzprofootball.app" --web-dir www
-
-
-      - name: Add Android
-        run: |
           npx cap add android
 
 
-      - name: Fix Kotlin Duplicate Classes
+      - name: Fix Kotlin Version
         run: |
           echo "
           configurations.all {
-              resolutionStrategy {
-                  force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
-                  force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22'
-                  force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22'
+              resolutionStrategy.eachDependency { details ->
+                  if (details.requested.group == 'org.jetbrains.kotlin') {
+                      details.useVersion '1.8.22'
+                  }
               }
           }
-          " >> android/build.gradle
+          " >> android/app/build.gradle
 
 
       - name: Sync Capacitor
@@ -77,7 +71,7 @@ jobs:
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew clean assembleDebug
 
 
       - name: Upload APK
