@@ -1,3 +1,4 @@
+
 const button=document.getElementById("startBtn");
 
 button.onclick=function(){
