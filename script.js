@@ -77,6 +77,8 @@ function startTraining() {
 
 function openPage(page) {
 
-    window.location.href = "pages/" + page;
+    window.location.href = "./pages/" + page;
+
+}
 
 }
