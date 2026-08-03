@@ -6,7 +6,7 @@
 }
 
 
-/* Main App Background */
+/* Main Background */
 body{
 
     min-height:100vh;
@@ -29,7 +29,7 @@ body{
 }
 
 
-/* Main Container */
+/* App Container */
 .app{
 
     max-width:500px;
@@ -41,14 +41,36 @@ body{
 }
 
 
-/* Heading */
+
+/* Logo */
+
+.logo{
+
+    width:120px;
+
+    height:120px;
+
+    object-fit:contain;
+
+    display:block;
+
+    margin:20px auto;
+
+    filter:drop-shadow(0 5px 10px black);
+
+}
+
+
+
+/* Main Title */
+
 h1{
 
     text-align:center;
 
     font-size:38px;
 
-    margin-top:25px;
+    margin-top:10px;
 
 }
 
@@ -68,7 +90,8 @@ h1{
 
 
 
-/* Player Box */
+/* Player Profile Box */
+
 .profile{
 
     background:rgba(255,255,255,0.95);
@@ -101,6 +124,7 @@ h1{
 
 
 /* Input */
+
 input{
 
     width:100%;
@@ -120,6 +144,7 @@ input{
 
 
 /* Button */
+
 button{
 
     width:100%;
@@ -154,7 +179,8 @@ button:hover{
 
 
 
-/* Dashboard */
+/* Dashboard Hidden */
+
 .hidden{
 
     display:none;
@@ -163,7 +189,20 @@ button:hover{
 
 
 
-/* Training Cards */
+/* Dashboard Title */
+
+#dashboard h2{
+
+    text-align:center;
+
+    margin-top:30px;
+
+}
+
+
+
+/* Cards Area */
+
 .cards{
 
     display:grid;
@@ -178,7 +217,8 @@ button:hover{
 
 
 
-/* Individual Card */
+/* Training Cards */
+
 .card{
 
     background:rgba(255,255,255,0.95);
@@ -228,7 +268,8 @@ button:hover{
 
 
 
-/* Mobile Design */
+/* Mobile */
+
 @media(max-width:500px){
 
 
@@ -242,6 +283,15 @@ button:hover{
     h1{
 
         font-size:28px;
+
+    }
+
+
+    .logo{
+
+        width:100px;
+
+        height:100px;
 
     }
 
