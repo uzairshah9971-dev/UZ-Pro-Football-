@@ -1,49 +1,81 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UZ Pro Football</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<title>UZ Pro Football</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="overlay">
+<div class="app">
 
-    <div class="hero">
+<h1>⚽ UZ Pro Football</h1>
 
-        <h1>⚽ UZ Pro Football</h1>
+<p class="subtitle">
+Become a better football player
+</p>
 
-        <p class="subtitle">
-            Train Smarter. Play Better.
-        </p>
 
-        <div class="player-box">
+<div class="profile">
+<h2>Enter Your Name</h2>
 
-            <input
-                type="text"
-                id="playerName"
-                placeholder="Enter Your Name">
+<input id="playerName" placeholder="Your name">
 
-            <button id="startBtn">
-                Start Training
-            </button>
-
-        </div>
-
-    </div>
+<button onclick="startTraining()">
+Start Training
+</button>
 
 </div>
+
+
+<div id="dashboard" class="hidden">
+
+<h2>Training Dashboard</h2>
+
+<div class="cards">
+
+<div class="card">
+🎯
+<h3>Shooting</h3>
+</div>
+
+
+<div class="card">
+👟
+<h3>Dribbling</h3>
+</div>
+
+
+<div class="card">
+⚽
+<h3>Passing</h3>
+</div>
+
+
+<div class="card">
+🏃
+<h3>Speed</h3>
+</div>
+
+
+<div class="card">
+💪
+<h3>Fitness</h3>
+</div>
+
+
+<div class="card">
+🍎
+<h3>Nutrition</h3>
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
 
 <script src="script.js"></script>
 
