@@ -11,7 +11,7 @@ jobs:
 
     steps:
 
-    - name: Checkout project
+    - name: Checkout
       uses: actions/checkout@v4
 
 
@@ -23,12 +23,13 @@ jobs:
 
     - name: Install Capacitor
       run: |
-        npm install
+        npm init -y
         npm install @capacitor/core @capacitor/cli
 
 
-    - name: Add Android
+    - name: Create Android Project
       run: |
+        npx cap init "UZ Pro Football" "com.uzprofootball.app"
         npx cap add android
 
 
