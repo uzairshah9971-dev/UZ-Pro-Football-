@@ -1,8 +1,10 @@
-
 name: Build UZ Pro Football APK
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
 
@@ -12,47 +14,47 @@ jobs:
 
     steps:
 
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
 
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
 
-    - name: Install Capacitor
-      run: |
-        npm init -y
-        npm install @capacitor/core @capacitor/cli
+      - name: Install Capacitor
+        run: |
+          npm init -y
+          npm install @capacitor/core @capacitor/cli
 
 
-    - name: Create Capacitor App
-      run: |
-        npx cap init "UZ Pro Football" "com.uzprofootball.app" --web-dir www
+      - name: Create Web Folder
+        run: |
+          mkdir www
+          cp -r index.html style.css script.js assets pages www/
 
 
-    - name: Create www folder
-      run: |
-        mkdir www
-        cp -r index.html style.css script.js assets pages www/
+      - name: Initialize Capacitor
+        run: |
+          npx cap init "UZ Pro Football" "com.uzprofootball.app" --web-dir www
 
 
-    - name: Add Android
-      run: |
-        npx cap add android
+      - name: Add Android
+        run: |
+          npx cap add android
 
 
-    - name: Build APK
-      run: |
-        cd android
-        chmod +x gradlew
-        ./gradlew assembleDebug
+      - name: Build APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
 
 
-    - name: Upload APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: UZ-Pro-Football-APK
-        path: android/app/build/outputs/apk/debug/app-debug.apk
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: UZ-Pro-Football-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
