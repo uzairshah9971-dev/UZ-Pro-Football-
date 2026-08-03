@@ -6,16 +6,19 @@ on:
     branches:
       - main
 
+
 jobs:
 
   build:
 
     runs-on: ubuntu-latest
 
+
     steps:
 
       - name: Checkout
         uses: actions/checkout@v4
+
 
 
       - name: Setup Node
@@ -24,10 +27,12 @@ jobs:
           node-version: 20
 
 
+
       - name: Install Capacitor
         run: |
           npm init -y
-          npm install @capacitor/core @capacitor/cli
+          npm install @capacitor/core @capacitor/cli @capacitor/android
+
 
 
       - name: Create Web Folder
@@ -36,14 +41,23 @@ jobs:
           cp -r index.html style.css script.js assets pages www/
 
 
+
       - name: Initialize Capacitor
         run: |
           npx cap init "UZ Pro Football" "com.uzprofootball.app" --web-dir www
 
 
-      - name: Add Android
+
+      - name: Add Android Platform
         run: |
           npx cap add android
+
+
+
+      - name: Sync Files
+        run: |
+          npx cap sync android
+
 
 
       - name: Build APK
@@ -51,6 +65,7 @@ jobs:
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug
+
 
 
       - name: Upload APK
